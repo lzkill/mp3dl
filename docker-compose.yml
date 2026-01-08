@@ -1,0 +1,20 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=${PORT:-3000}
+      - DOWNLOAD_DIR=${DOWNLOAD_DIR:-/app/downloads}
+      - FILE_MAX_AGE_MS=${FILE_MAX_AGE_MS:-3600000}
+      - DOWNLOAD_TIMEOUT_MS=${DOWNLOAD_TIMEOUT_MS:-600000}
+      - MAX_VIDEO_SIZE_MB=${MAX_VIDEO_SIZE_MB:-500}
+      - MAX_VIDEO_DURATION_SEC=${MAX_VIDEO_DURATION_SEC:-3600}
+    volumes:
+      - ./server.js:/app/server.js
+      - ./public:/app/public
+      - ./downloads:/app/downloads
+    ports:
+      - "${PORT:-3000}:3000"
+    restart: unless-stopped

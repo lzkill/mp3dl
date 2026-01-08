@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Audio Downloader</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 YouTube Audio Downloader</h1>
+            <p>Baixe o áudio de qualquer vídeo do YouTube em MP3</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <form id="downloadForm">
+                    <div class="form-group">
+                        <label for="videoUrl">URL do Vídeo do YouTube</label>
+                        <input 
+                            type="text" 
+                            id="videoUrl" 
+                            placeholder="https://www.youtube.com/watch?v=..." 
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quality">Qualidade do Áudio (kbps)</label>
+                        <select id="quality">
+                            <option value="64">64 kbps (Baixa)</option>
+                            <option value="128">128 kbps (Média)</option>
+                            <option value="192" selected>192 kbps (Alta)</option>
+                            <option value="256">256 kbps (Muito Alta)</option>
+                            <option value="320">320 kbps (Máxima)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="downloadBtn" class="btn-primary">
+                        <span class="btn-text">Baixar Áudio</span>
+                        <span class="spinner hidden"></span>
+                    </button>
+                </form>
+
+                <div id="progressContainer" class="progress-container hidden">
+                    <div class="progress-bar-wrapper">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                    <p id="progressText" class="progress-text">Preparando...</p>
+                </div>
+
+                <div id="videoInfo" class="video-info hidden">
+                    <h3>Informações do Vídeo</h3>
+                    <div class="info-content">
+                        <img id="thumbnail" src="" alt="Thumbnail">
+                        <div class="info-details">
+                            <p><strong>Título:</strong> <span id="title"></span></p>
+                            <p><strong>Canal:</strong> <span id="uploader"></span></p>
+                            <p><strong>Duração:</strong> <span id="duration"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="errorMessage" class="error-message hidden"></div>
+                <div id="successMessage" class="success-message hidden"></div>
+            </div>
+
+            <div class="instructions">
+                <h3>📋 Como usar:</h3>
+                <ol>
+                    <li>Cole a URL de um vídeo do YouTube no campo acima</li>
+                    <li>Escolha a qualidade desejada do áudio (maior qualidade = arquivo maior)</li>
+                    <li>Clique em "Baixar Áudio" e aguarde o processamento</li>
+                    <li>O arquivo MP3 será baixado automaticamente</li>
+                </ol>
+            </div>
+        </main>
+
+        <footer>
+            <p>Desenvolvido com ❤️ usando Node.js e yt-dlp</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
